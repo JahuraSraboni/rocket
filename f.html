@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Failure Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#2B7A78;
+            text-align: center;
+        }
+        .container {
+            width: 70%;
+            margin: auto;
+            background:#DEF2F1;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #17252A;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rocket Launch Failure Prediction</h1>
+    </header>
+    
+    <!-- Login Section -->
+    <div class="container">
+        <h2>User Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="button" onclick="loginUser()">Login</button>
+            <button type="button" onclick="logoutUser()">Logout</button>
+        </form>
+    </div>
+    
+    <!-- Configuration Checking -->
+    <div class="container">
+        <h2>Configuration Checking</h2>
+        <p>Ensure all system parameters are properly configured before launch.</p>
+        <p>
+            Fuel Pressure - Must be between 2.0-3.5 MPa</br></br>
+             Engine Temperature - Optimal range: -50°C to 500°C</br></br>
+            Weather Conditions - Wind speed must be < 30 m/s</br></br>
+            Payload Weight - Must not exceed max capacity</br></br>
+        </p>
+
+    </div>
+    
+    <!-- Rocket Design Parameters -->
+    <div class="container">
+        <h2>Rocket Design Parameters</h2>
+        <p>Review key design parameters like thrust, stability, and weight distribution.</p>
+        <p>
+            <strong>Thrust-to-Weight Ratio (TWR):</strong> Determines if the rocket can lift off. TWR > 1 is necessary.</br></br>
+            <br><strong>Structural Integrity:</strong> The rocket must withstand forces like vibration, aerodynamic pressure, and mechanical stress.</br></br>
+            <br><strong>Center of Gravity (CG) & Center of Pressure (CP):</strong> A stable rocket has its CG above CP to prevent flipping.</br></br>
+            <br><strong>Engine Efficiency & Reliability:</strong> Factors include thrust, fuel efficiency, and cooling systems.</br></br>
+            <br><strong>Aerodynamics:</strong> Nose cone shape, fin design, and drag coefficient affect flight stability.</br></br>
+            <br><strong>Fuel Type & Efficiency:</strong> Liquid vs. solid fuel impacts burn rate, energy output, and controllability.</br></br>
+            <br><strong>Payload Capacity:</strong> The weight of the satellite or cargo must be within the rocket’s carrying capacity.</br></br>
+        </p>
+    </div>
+    
+    <!-- Launch Site Characteristics -->
+    <div class="container">
+        <h2>Launch Site Characteristics</h2>
+        <p>Analyze location-based conditions that might impact the launch.</p>
+        <p>Kennedy Space Center (USA) - Close to the equator, reduces fuel usage
+            <br><br>Baikonur Cosmodrome (Kazakhstan) - Historic launch site for Soyuz missions
+           <br><br> Guiana Space Centre (French Guiana) - Optimal for geostationary launches
+           <br><br> Vandenberg Space Force Base (USA) - Best for polar orbits</p>
+    </div>
+    
+    <!-- Data Processing -->
+    <div class="container">
+        <h2>Data Processing</h2>
+        <p>Processing historical launch data to enhance prediction accuracy.</p>
+    </div>
+    
+    <!-- Data Input Form -->
+    <div class="container">
+        <h2>Enter Rocket Launch Data</h2>
+        <form id="predictionForm">
+            <label for="weather">Weather Condition:</label>
+            <select id="weather">
+                <option value="clear">Clear</option>
+                <option value="cloudy">Cloudy</option>
+                <option value="stormy">Stormy</option>
+            </select>
+            <label for="engine">Engine Health (%):</label>
+            <input type="number" id="engine" min="0" max="100" required>
+            <label for="payload">Payload Weight (kg):</label>
+            <input type="number" id="payload" min="0" required>
+            <button type="button" onclick="predictFailure()">Predict</button>
+        </form>
+        <h3 id="result"></h3>
+    </div>
+    
+    <!-- Failure History -->
+    <div class="container">
+        <h2>Failure History</h2>
+        <p>Review past rocket failures and associated conditions.</p>
+        <p>
+            Challenger (1986) - O-ring failure due to cold weather</br></br>
+            Columbia (2003) - Thermal protection failure on re-entry</br></br>
+            Apollo 1 (1967) - Cabin fire during a pre-launch test</br></br>
+            Soyuz 18a (1975) - Stage separation failure</br></br>
+            SpaceX Falcon 1 Flight 3 (2008) - Stage separation issue</br></br>
+        </p>
+    </div>
+    
+    <!-- Suggestions -->
+    <div class="container">
+        <h2>Suggestions</h2>
+        <p>Follow recommended safety measures and optimal launch conditions.</p>
+        <p>Ensure proper engine maintenance, optimize payload weight, and consider weather conditions before launch.</p>
+    </div>
+    
+    <script>
+        function loginUser() {
+            alert("Login successful!");
+        }
+        function logoutUser() {
+            alert("Logged out!");
+        }
+        function predictFailure() {
+            let weather = document.getElementById('weather').value;
+            let engineHealth = document.getElementById('engine').value;
+            let payloadWeight = document.getElementById('payload').value;
+            
+            let probability = Math.random() * 100;
+            let resultMessage = `Estimated Failure Probability: ${probability.toFixed(2)}%`;
+            
+            document.getElementById('result').innerText = resultMessage;
+        }
+    </script>
+</body>
+</html>
+
+
